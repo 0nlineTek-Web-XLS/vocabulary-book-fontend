@@ -3,8 +3,6 @@
   import { useRouter } from 'vue-router';
   const router = useRouter()
 
-  import LTB from "./components/LTB_search_word.vue";
-
   let account = ref("账号");
   //存储账号名称
 
