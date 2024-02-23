@@ -1,17 +1,20 @@
 <script setup>
   import {ref,computed} from "vue";
   import { useRouter } from 'vue-router';
+
+  import LTB_login from "./components/LTB_login.vue";
+
   const router = useRouter()
 
   let account = ref("账号");
   //存储账号名称
 
-  let login = false;
+  let login = ref(false);
   //先预设为未登录
 
 
   const is_login_nav = computed(() => {
-    return login ? "#fff" : "#aaaaaa";
+    return login.value ? "#fff" : "#aaaaaa";
   })//控制侧边栏字样的颜色
 
   //路由跳转
@@ -21,6 +24,7 @@
   const test =() =>{
     router.push('/test')
   }
+
 </script>
 
 <template>
@@ -56,8 +60,8 @@
       </div>
 
       <div id="content" style="z-index: 100;overflow-y: scroll;"><!--主要的内容区，所有的页面内容以组件形式插入到这里-->
-        <router-view></router-view>
-        <!---->
+        <LTB_login @do_login_="() => {login = !login}"/>
+        <!--<router-view></router-view>-->
         
       </div>
       
