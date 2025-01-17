@@ -1,11 +1,11 @@
 <script setup>
-    import { defineEmits } from 'vue';
+    import { inject } from 'vue';
 
-    const emit = defineEmits(['change_login_']);
-
-    function event_login()
-    {  
-        emit('change_login_');
+    const fun_login = inject('fun_login');
+    function login_sure()
+    {
+        console.log("确认登录");
+        fun_login();
     }
 </script>
 
@@ -30,7 +30,7 @@
                 <div class="button_1" style="margin-left: 40px;">忘记密码</div>
             </div>
 
-            <div id="button_2">登录</div>
+            <div id="button_2" @click="login_sure">登录</div>
             <div style="margin-top: 40px;width: 10px;"></div>
         </div>
     </div>
